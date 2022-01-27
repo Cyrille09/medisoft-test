@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ViewUsers from '../src/pages/users';
+import AddUser from '../src/pages/users/add';
+import EditUser from '../src/pages/users/edit';
+import EcahUser from '../src/pages/users/viewEcah';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/users" element={<ViewUsers />} />
+        <Route exact path="/" element={<ViewUsers />} />
+        <Route path="/users/add" element={<AddUser />} />
+        <Route path="/users/edit/:id" element={<EditUser />} />
+        <Route path="/users/each/:id" element={<EcahUser />} />
+      </Routes>
+    </Router>
   );
 }
 
